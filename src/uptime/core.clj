@@ -18,6 +18,12 @@
 (defn get-service [id]
   (fetch-one :services :where {:_id id}))
 
-(defn vote-service [s state date comment]
-  (let [v {:state state :date date :comment comment}]
-    (assoc s :votes (conj (:votes s) v))))
+(defn vote-service [id state date comment]
+  (when-let [s (get-service id)]
+    (let [v {:state state :date date :comment comment}
+          vs (conj (:votes s) v)]
+      (update! :services s (assoc s :votes vs)))))
+
+(defn remove-service [id]
+  (when-let [s (get-service id)]
+    (destroy! :services s)))
