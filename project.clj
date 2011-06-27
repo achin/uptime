@@ -4,4 +4,4 @@
                  [congomongo "0.1.4-SNAPSHOT"]
 		 [compojure "0.6.3"]]
   :dev-dependencies [[lein-ring "0.4.3"]]
-  :ring {:handler uptime.core/app})
+  :ring {:handler uptime.web/app})
