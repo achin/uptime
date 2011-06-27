@@ -1,0 +1,26 @@
+h1. uptime
+
+A simple application that uses Clojure, Compojure, and MongoDB to let users track the uptime of web services.
+
+h2. Dependencies
+* Clojure 1.2.1
+* Compojure 0.6.3
+* MongoDB 1.8.2
+* congomongo 0.1.4-SNAPSHOT
+* Leiningen 1.5.2
+* swank-clojure 1.3.1
+* lein-ring 0.4.3
+
+h2. Usage
+
+# Install MongoDB. uptime stores data in the @uptime@ database in MongoDB.
+# Check out the latest copy of uptime.
+# Pull dependencies: @lein deps@.
+# Run the tests (though, they'll probably fail): @lein test@.
+# Run the dev server: @lein ring server@.
+
+h2. License
+
+Copyright (C) 2011 Alex Chin
+
+Distributed under the Eclipse Public License, the same as Clojure.
