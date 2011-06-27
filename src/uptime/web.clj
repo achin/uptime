@@ -1,7 +1,7 @@
 (ns uptime.web
   (:use compojure.core
         clojure.contrib.json
-        uptime.core)
+        uptime.db)
   (:require [compojure.route :as route]
             [compojure.handler :as handler]))
 

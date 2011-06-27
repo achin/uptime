@@ -1,5 +1,5 @@
-(ns uptime.test.core
-  (:use [uptime.core])
+(ns uptime.test.db
+  (:use [uptime.db])
   (:use [clojure.test]))
 
 (deftest replace-me ;; FIXME: write

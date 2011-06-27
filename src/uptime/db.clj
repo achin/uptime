@@ -1,4 +1,4 @@
-(ns uptime.core
+(ns uptime.db
   (:use somnium.congomongo))
 
 (mongo! :db "uptime")
