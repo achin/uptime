@@ -5,10 +5,11 @@
             [compojure.handler :as handler]
             [uptime.db :as db]))
 
-(defn- json-response [s]
+(defn- json-response [s & {status :status headers :headers}]
   (let [json (json-str s)]
-    {:headers {"Content-Type" "application/json"}
-     :body s}))
+    {:status (or status 200)
+     :headers (merge {"Content-Type" "application/json"} headers)
+     :body json}))
 
 (defn- root []
   "<h1>Uptime!</h1>")
@@ -21,6 +22,14 @@
     (json-response s)
     {:status 404}))
 
+(defn- add-service [name url]
+  (if-let [s (db/add-service name url)]
+    (let [url (str "/service/" (:_id s))]
+      (json-response s
+                     :status 201
+                     :headers {"Location" url}))
+    {:status 500}))
+
 (defroutes main-routes
   (GET "/" []
        (root))
@@ -28,6 +37,8 @@
        (list-services))
   (GET "/service/:id" [id]
        (get-service id))
+  (POST "/service" [name url]
+        (add-service name url))
   (route/resources "/")
   (route/not-found "Page not found."))
 
