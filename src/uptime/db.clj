@@ -13,7 +13,7 @@
   (insert! :services {:_id (uuid)
                      :name name
                      :url url
-                     :votes []})) 
+                      :votes []}))
 
 (defn get-service [id]
   (fetch-one :services :where {:_id id}))

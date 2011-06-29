@@ -35,6 +35,11 @@
     {:status 204}
     {:status 500}))
 
+(defn vote-service [id state date comment]
+  (if (db/vote-service id state date comment)
+    {:status 204}
+    {:status 500}))
+
 (defroutes main-routes
   (GET "/" []
        (root))
@@ -50,6 +55,9 @@
   
   (DELETE "/service/:id" [id]
           (remove-service id))
+
+  (POST "/service/:id/votes" [id state date comment]
+        (vote-service id state date comment))
   
   (route/resources "/")
   (route/not-found "Page not found."))
