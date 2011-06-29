@@ -44,19 +44,19 @@
   (GET "/" []
        (root))
   
-  (GET "/service" []
+  (GET "/services" []
        (list-services))
   
-  (GET "/service/:id" [id]
+  (GET "/services/:id" [id]
        (get-service id))
   
-  (POST "/service" [name url]
+  (POST "/services" [name url]
         (add-service name url))
   
-  (DELETE "/service/:id" [id]
+  (DELETE "/services/:id" [id]
           (remove-service id))
 
-  (POST "/service/:id/votes" [id state date comment]
+  (POST "/services/:id/votes" [id state date comment]
         (vote-service id state date comment))
   
   (route/resources "/")
