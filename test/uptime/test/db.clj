@@ -1,6 +1,6 @@
 (ns uptime.test.db
   (:use uptime.db)
-  (:use clojure.test))
+  (:use clojure.test)
+  (:use midje.sweet))
 
-(deftest replace-me ;; FIXME: write
-  (is false "No tests have been written."))
+(fact (+ 1 1) => 3)
