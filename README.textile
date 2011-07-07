@@ -18,7 +18,7 @@ h2. Usage
 # Install MongoDB. uptime stores data in the @uptime@ database in MongoDB.
 # Check out the latest copy of uptime.
 # Pull dependencies: @lein deps@.
-# Run the tests (though, they'll probably fail): @lein test@.
+# Run the tests: @lein midje@.
 # Run the dev server: @lein ring server@.
 
 h2. License
