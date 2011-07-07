@@ -11,9 +11,24 @@
          (declare ~(symbol v)) 
          (in-ns '~(symbol orig-ns)))))
 
+;;;
+
 (remote-declare somnium.congomogo/fetch)
 
 (fact
- (list-services) => :dummy-list
+ (list-services) => truthy
  (provided
-  (somnium.congomongo/fetch :services) => :dummy-list))
+  (somnium.congomongo/fetch :services) => true))
+
+;;;
+
+(remote-declare somnium.congomongo/insert)
+
+(fact
+ (add-service ...name... ...url...) => truthy
+ (provided
+  (uuid) => ...uuid...
+  (somnium.congomongo/insert! :services {:_id ...uuid...
+                                         :name ...name...
+                                         :url ...url...
+                                         :votes []}) => true))

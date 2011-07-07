@@ -6,13 +6,13 @@
 (defn list-services []
   (fetch :services))
 
-(defn- uuid []
+(defn uuid []
   (.toString (java.util.UUID/randomUUID)))
 
 (defn add-service [name url]
   (insert! :services {:_id (uuid)
-                     :name name
-                     :url url
+                      :name name
+                      :url url
                       :votes []}))
 
 (defn get-service [id]
